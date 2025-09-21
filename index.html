@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Contact Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <span> Contact Manager</span>
+        </div>
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search contacts..."
+          />
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="contact-form">
+          <h2>
+            <i class="fas fa-plus-circle"></i>
+            <span id="formTitle">Add New Contact</span>
+          </h2>
+          <form id="contactForm">
+            <input type="hidden" id="editId" value="" />
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+1 (555) 123-4567" />
+            </div>
+            <div class="form-group">
+              <label for="title">Job Title</label>
+              <input type="text" id="title" placeholder="Software Engineer" />
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="family">Family</option>
+                <option value="friends">Friends</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes</label>
+              <textarea
+                id="notes"
+                placeholder="Add any additional information..."
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fas fa-save"></i>
+              <span id="submitText">Add Contact</span>
+            </button>
+            <button
+              type="button"
+              id="cancelEdit"
+              class="btn btn-block"
+              style="display: none; margin-top: 10px; background: #e9ecef"
+            >
+              <i class="fas fa-times"></i> Cancel Edit
+            </button>
+          </form>
+        </div>
+
+        <div class="contacts-section">
+          <h2 class="section-title">
+            <i class="fas fa-users"></i> My Contacts
+          </h2>
+          <div class="contacts-container" id="contactsContainer">
+            <div class="empty-state">
+              <i class="fas fa-user-plus"></i>
+              <p>No contacts yet. Add your first contact!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="deleteModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <i class="fas fa-exclamation-triangle"></i> Confirm Delete
+          </h3>
+          <button class="close-btn">&times;</button>
+        </div>
+        <p>
+          Are you sure you want to delete
+          <strong id="deleteContactName"></strong>? This action cannot be
+          undone.
+        </p>
+        <div class="modal-footer">
+          <button class="btn" id="cancelDelete">Cancel</button>
+          <button class="btn btn-danger" id="confirmDelete">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="notification" id="notification">
+      <i class="fas fa-check-circle"></i>
+      <span id="notificationText">Contact added successfully!</span>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
